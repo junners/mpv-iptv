@@ -321,6 +321,9 @@ local playlister = {
   end,
 
   play = function(self)
+    if not (self.wndstart and self.cursor and self.plsfiltered[self.wndstart+self.cursor]) then 
+      return
+    end
     mp.commandv("loadfile",self.pls[self.plsfiltered[self.wndstart+self.cursor]].filename)
     if self.plspos then
       self.pls[self.plspos].current=false
